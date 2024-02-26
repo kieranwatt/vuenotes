@@ -10,8 +10,8 @@ import Cart from './Cart.vue';
 // import router from './router'
 
 const routes = [
-    { path: '/', component: Home }, // Home route
-    { path: '/cart', component: Cart } // Cart route
+    { path: '/', component: Home }, 
+    { path: '/cart', component: Cart } 
 ];
 
 const router = createRouter({

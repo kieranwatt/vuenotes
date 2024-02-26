@@ -1,3 +1,21 @@
+<template>
+    <div class="home">
+        <h1>bladeecity.net</h1>
+        <div class="featured-albums">
+            <h2>Featured Albums</h2>
+            <div class="album-list">
+                <div v-for="product in bladeeproducts" :key="product.title" class="album-card">
+                    <img :src="product.imageLink" alt="Album Image" class="album-image">
+                    <h3>{{ product.title }}</h3>
+                    <p>{{ product.description }}</p>
+                    <span class="album-price">{{ product.price }}</span>
+                    <button @click="addToCart(product)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
 <script setup>
 import { ref } from "vue";
 const emit = defineEmits(["add-to-cart"]);
@@ -67,24 +85,6 @@ const addToCart = (product) => {
     emit('add-to-cart', product);
 }
 </script>
-
-<template>
-    <div class="home">
-        <h1>bladeecity.net</h1>
-        <div class="featured-albums">
-            <h2>Featured Albums</h2>
-            <div class="album-list">
-                <div v-for="product in bladeeproducts" :key="product.title" class="album-card">
-                    <img :src="product.imageLink" alt="Album Image" class="album-image">
-                    <h3>{{ product.title }}</h3>
-                    <p>{{ product.description }}</p>
-                    <span class="album-price">{{ product.price }}</span>
-                    <button @click="addToCart(product)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
 
 <style scoped>
 .home {
