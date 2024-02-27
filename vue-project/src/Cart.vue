@@ -2,9 +2,10 @@
     <div class="cart">
         <h2>Cart</h2>
         <ul>
-            <li v-for="item in cartItems" :key="item.product.title">
-                <img :src="item.product.imageLink" alt="Product Image" class="product-image">
-                {{ item.product.title }} ({{ item.quantity }})
+            <li v-for="(item, index) in cartItems" :key="index">
+                <img :src="item.bladees.imageLink" alt="bladeeimage" class="bladee-image">
+                {{ item.bladees.title }} ({{ item.quantity }})
+                <button @click="removeFromCart(index)">Remove</button>
             </li>
         </ul>
     </div>
@@ -17,10 +18,15 @@ export default {
             type: Array,
             default: () => []
         }
+    },
+    methods: {
+        removeFromCart(index) {
+            this.$emit('remove-from-cart', index);
+        }
     }
 };
 </script>
-  
+
 <style scoped>
 .home {
     text-align: center;

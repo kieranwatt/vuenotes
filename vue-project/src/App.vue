@@ -1,14 +1,16 @@
 <template>
   <div id="app">
-    <router-view @add-to-cart="addToCart"></router-view>
+    <router-view @add-to-cart="addToCart" @remove-from-cart="removeFromCart"></router-view>
     <div class="cart">
-      <h2>Cart</h2>
+      <h2>sillyluhbladees</h2>
       <ul>
-        <li v-for="item in cartItems" :key="item.product.title">
-          <img :src="item.product.imageLink" alt="Product Image" class="product-image">
-          {{ item.product.title }} ({{ item.quantity }})
+        <li v-for="(item, index) in cartItems" :key="index">
+          <img :src="item.bladees.imageLink" alt="bladeeimage" class="bladee-image">
+          {{ item.bladees.title }} ({{ item.quantity }})
+          <button @click="removeFromCart(index)">Remove</button>
         </li>
       </ul>
+      <div>total dabloons: {{ calculateTotalPrice }}</div>
     </div>
   </div>
 </template>
@@ -21,15 +23,27 @@ export default {
     };
   },
   methods: {
-    addToCart(product) {
-      const existingItemIndex = this.cartItems.findIndex(item => item.product.title === product.title);
+    addToCart(bladees) {
+      const existingItemIndex = this.cartItems.findIndex(item => item.bladees.title === bladees.title);
       if (existingItemIndex !== -1) {
         this.cartItems[existingItemIndex].quantity++;
       } else {
-        this.cartItems.push({ product: product, quantity: 1 });
+        this.cartItems.push({ bladees: bladees, quantity: 1 });
       }
     },
+    removeFromCart(index) {
+      if (this.cartItems[index].quantity > 1) {
+        this.cartItems[index].quantity--;
+      } else {
+        this.cartItems.splice(index, 1);
+      }
+    }
   },
+  computed: {
+    calculateTotalPrice() {
+      return this.cartItems.reduce((total, item) => total + (item.bladees.price * item.quantity), 0).toFixed(2);
+    }
+  }
 };
 </script>
 

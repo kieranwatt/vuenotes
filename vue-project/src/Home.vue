@@ -4,12 +4,12 @@
         <div class="featured-albums">
             <h2>Featured Albums</h2>
             <div class="album-list">
-                <div v-for="product in bladeeproducts" :key="product.title" class="album-card">
-                    <img :src="product.imageLink" alt="Album Image" class="album-image">
-                    <h3>{{ product.title }}</h3>
-                    <p>{{ product.description }}</p>
-                    <span class="album-price">{{ product.price }}</span>
-                    <button @click="addToCart(product)">Add to Cart</button>
+                <div v-for="bladees in bladeeproducts" :key="bladees.title" class="album-card">
+                    <img :src="bladees.imageLink" alt="Album Image" class="album-image">
+                    <h3>{{ bladees.title }}</h3>
+                    <p>{{ bladees.description }}</p>
+                    <span class="album-price">{{ bladees.price }}</span>
+                    <button @click="addToCart(bladees)">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -81,8 +81,8 @@ const bladeeproducts = ref([
         price: 2100.00,
     },
 ]);
-const addToCart = (product) => {
-    emit('add-to-cart', product);
+const addToCart = (bladees) => {
+    emit('add-to-cart', bladees);
 }
 </script>
 
