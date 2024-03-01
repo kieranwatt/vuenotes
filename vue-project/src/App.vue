@@ -52,6 +52,10 @@ export default {
   text-align: center;
 }
 
+.cart ul {
+  list-style-type: none;
+}
+
 .featured-albums {
   margin-top: 2rem;
 }
@@ -81,5 +85,12 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+}
+
+.bladee-image {
+  width: 250px; 
+  height: 250px; 
+  object-fit: cover;
+  border-radius: 5px;
 }
 </style>
