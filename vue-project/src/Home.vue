@@ -80,6 +80,12 @@ const bladeeproducts = ref([
         description: "What is that cover.",
         price: 2100.00,
     },
+    {
+        imageLink: "https://upload.wikimedia.org/wikipedia/en/a/aa/Yung_Lean_%26_Bladee_-_Psykos.jpg",
+        title: "Psykos",
+        description: "f r o g",
+        price: 8888.00,
+    },
 ]);
 const addToCart = (bladees) => {
     emit('add-to-cart', bladees);
